@@ -1,11 +1,14 @@
+{% extends 'base.html' %}
 {% block content %}
-<h1>Weather</h1>
-{% for w in weather %}
-<h1>{{ w.city_name }}</h1>
 
-{% endfor %}
-{{ weather.icon }}
-<h3>City : {{ weather.city }}</h3>
-<h4>Teamp : {{ weather.temperature }}</h4>
-<h4> description : {{ weather.description }}</h4>
+<div class="position-absolute top-50 start-50 translate-middle">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <img src="http://openweathermap.org/img/wn/{{ weather.icon }}.png" alt="Weather Icon">
+            <h4 class="card-title">{{ weather.city }},{{ weather.country }} </h4>
+            <h5>{{ weather.temperature }}° C</h5>
+            <p class="card-text">description : {{ weather.description }}</p>
+        </div>
+    </div>
+</div>
 {% endblock %}
