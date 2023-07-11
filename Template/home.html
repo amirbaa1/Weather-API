@@ -1,0 +1,11 @@
+{% block content %}
+<h1>Weather</h1>
+{% for w in weather %}
+<h1>{{ w.city_name }}</h1>
+
+{% endfor %}
+{{ weather.icon }}
+<h3>City : {{ weather.city }}</h3>
+<h4>Teamp : {{ weather.temperature }}</h4>
+<h4> description : {{ weather.description }}</h4>
+{% endblock %}
