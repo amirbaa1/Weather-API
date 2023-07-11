@@ -2,12 +2,21 @@
 {% block content %}
 
 <div class="position-absolute top-50 start-50 translate-middle">
+    <form class="row g-3" method="GET">
+        {% csrf_token %}
+        <div class="col-auto">
+            {{ search_c.name }}
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3">Search</button>
+        </div>
+    </form>
     <div class="card" style="width: 18rem;">
         <div class="card-body">
             <img src="http://openweathermap.org/img/wn/{{ weather.icon }}.png" alt="Weather Icon">
             <h4 class="card-title">{{ weather.city }},{{ weather.country }} </h4>
             <h5>{{ weather.temperature }}° C</h5>
-            <p class="card-text">description : {{ weather.description }}</p>
+            <h8 class="card-text">{{ weather.description }}</h8>
         </div>
     </div>
 </div>
