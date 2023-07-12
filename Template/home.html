@@ -2,13 +2,13 @@
 {% block content %}
 
 <div class="position-absolute top-50 start-50 translate-middle">
-    <form class="row g-3" method="GET">
+    <form class="row g-1" method="GET" role="search">
         {% csrf_token %}
         <div class="col-auto">
             {{ search_c.name }}
         </div>
         <div class="col-auto">
-            <button type="submit" class="btn btn-primary mb-3">Search</button>
+            <button type="submit" class="btn btn-primary mb-1">Search</button>
         </div>
     </form>
     <div class="card" style="width: 18rem;">
@@ -16,7 +16,20 @@
             <img src="http://openweathermap.org/img/wn/{{ weather.icon }}.png" alt="Weather Icon">
             <h4 class="card-title">{{ weather.city }},{{ weather.country }} </h4>
             <h5>{{ weather.temperature }}° C</h5>
-            <h8 class="card-text">{{ weather.description }}</h8>
+            <h6 class="card-text">{{ weather.description }}</h6>
+            <button class="btn btn-primary mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                    aria-expanded="false" aria-controls="collapseExample">
+                more
+            </button>
+            <div class="collapse" id="collapseExample">
+                <div>
+                    {% for w_5 in weather_5 %}
+<!--              {{ w_5.mean_temp }}° C<img src="http://openweathermap.org/img/wn/{{ w_5.weather_icon }}.png" alt="Weather Icon"> - {{ w_5.day }}-->
+                                 {{ w_5.mean_temp }}° C - {{ w_5.day }}
+                    <br>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
 </div>
