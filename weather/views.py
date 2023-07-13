@@ -109,7 +109,7 @@ def search_city(request):
                 })
                 print(",,,", weather_5)
         except KeyError:
-            return HttpResponseNotFound(render(request, 'search.html', {'message': "City not found."}))
+            return render(request, 'search.html', {'message': "City not found."})
     else:
-        return HttpResponseNotFound(render(request, 'search.html', {'message': "City not found."}))
+        return render(request, 'search.html', {'message': "City not found."})
     return render(request, 'home.html', context={'weather': weather, 'weather_5': weather_5})
