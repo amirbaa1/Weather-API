@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 
+{% url 'search' as home_url %}
+
 <div class="position-absolute top-50 start-50 translate-middle">
     <form class="row g-1" method="POST" role="search" action="{% url 'search' %}">
         {% csrf_token %}
@@ -23,10 +25,16 @@
                     aria-expanded="false" aria-controls="collapseExample">
                 more
             </button>
+                            {% if home_url == request.path %}
+            <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+               href="{% url 'home' %}">
+                back
+            </a>
+            {% endif %}
             <div class="collapse" id="collapseExample">
                 <div>
                     {% for w_5 in weather_5 %}
-                    <!--              {{ w_5.mean_temp }}° C<img src="http://openweathermap.org/img/wn/{{ w_5.weather_icon }}.png" alt="Weather Icon"> - {{ w_5.day }}-->
+                    <!--{{ w_5.mean_temp }}° C<img src="http://openweathermap.org/img/wn/{{ w_5.weather_icon }}.png" alt="Weather Icon"> - {{ w_5.day }}-->
                     {{ w_5.mean_temp }}° C - {{ w_5.day }}
                     <br>
                     {% endfor %}

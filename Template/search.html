@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
+
+<body>
+
 <div class="position-absolute top-50 start-50 translate-middle">
     <form class="row g-1" method="GET" role="search">
         {% csrf_token %}
@@ -28,7 +31,6 @@
             <div class="collapse" id="collapseExample">
                 <div>
                     {% for w_5 in weather_5 %}
-                    <!--              {{ w_5.mean_temp }}° C<img src="http://openweathermap.org/img/wn/{{ w_5.weather_icon }}.png" alt="Weather Icon"> - {{ w_5.day }}-->
                     {{ w_5.mean_temp }}° C - {{ w_5.day }}
                     <br>
                     {% endfor %}
@@ -48,6 +50,6 @@
     </div>
     {% endif %}
 </div>
-
+</body>
 
 {% endblock %}
