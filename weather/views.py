@@ -49,7 +49,11 @@ def HomeWeather(request):
         'country': city_weather['sys']['country'],
         'temperature': city_weather['main']['temp'],
         'description': city_weather['weather'][0]['description'],
-        'icon': city_weather['weather'][0]['icon']  # not is real icon !!!
+        'icon': city_weather['weather'][0]['icon'],  # not is real icon !!!
+        'humidity': city_weather['main']['humidity'],
+        'wind': city_weather['wind']['speed'],
+        'feels_like': city_weather['main']['feels_like'],
+        'visibility': city_weather['visibility']
     }
 
     search_c = FormCity()
@@ -76,8 +80,14 @@ def search_city(request):
                 'country': city_weather['sys']['country'],
                 'temperature': city_weather['main']['temp'],
                 'description': city_weather['weather'][0]['description'],
-                'icon': city_weather['weather'][0]['icon']
+                'icon': city_weather['weather'][0]['icon'],
+                'humidity': city_weather['main']['humidity'],
+                'wind': city_weather['wind']['speed'],
+                'feels_like': city_weather['main']['feels_like'],
+                'visibility': city_weather['visibility']
+
             }
+
             weather_5 = []
             temperature_dict = {}
 
@@ -109,7 +119,7 @@ def search_city(request):
                 })
                 print(",,,", weather_5)
         except KeyError:
-            return render(request, 'search.html', {'message': "City not found."})
+            return render(request, 'home.html', {'message': "City not found."})
     else:
-        return render(request, 'search.html', {'message': "City not found."})
+        return render(request, 'home.html', {'message': "City not found."})
     return render(request, 'home.html', context={'weather': weather, 'weather_5': weather_5})
